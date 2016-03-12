@@ -1,13 +1,14 @@
 shinyUI(fluidPage(theme = "bootstrap.css",
-        titlePanel("Temple of trials"),
+        titlePanel("Simple RPG simulator"),
         
 #++++++++++ ATRIBUTE SETTINGS ++++++++++       
         
         fluidRow(
                 #++++++++++ INTRO
                 fluidRow(
-                        column(12,
-                          h4("Welcome to the simple RPG simulator. Imagine yourself being a young member of a small tribe somewhere in
+                        column(12, wellPanel(
+                          h3 ("The temple of trials"),
+                          h4("Imagine yourself being a young member of a small tribe somewhere in
                                 the wastelands aching to explore the world beyond your village's outskirts. Your task is to go 
                                 through the Trial and prove yourself worth of adventure you wish to experience. You will be tested
                             inside the Temple of trials, where you will have to face two challenges testing your abilities.
@@ -16,40 +17,40 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 points into one ability, you are the best and cannot be defeated. Chose well, 
                             you cannot be the best in everything, yet it is better to be at least good in something."),
                           br(),
-                          h5("In more practical terms, you are to distribute 3 atribution points into your atributes 
+                          p("In more practical terms, you are to distribute 3 atribution points into your atributes 
                             (strength, agility, inteligence). Number of invested points determine number of dice rolls you have 
                         given use of respective ability. The trials take form of dice rolls, the sum of your roll(s) have to be
-                            bigger then sum of your opponent roll. In first trial your opponents have one dice roll, in second one
+                            bigger then sum of your opponent roll(s). In first trial your opponents have one dice roll, in second one
                             your opponent has two rolls. You will have one more atribution point to spend after winning in first trial.")
-                                
+                                ) #end of wellPanel    
                         ) #end of collumn of inside fluidRow 1
                         
                 ), #end of inside fluidRow 1
                 
                 #++++++++++ SET ATRIBUTES
                 fluidRow(
-                        column(3,
+                        column(3, wellPanel(
                                helpText("Points spent (have to be 3 to be able to proceed):"),
-                               verbatimTextOutput("sum")
+                               verbatimTextOutput("sum"))
                         ), #end of column 1, inside fluidRow 2
                         
-                        column(3,
-                               numericInput("st", "Strength", min=0, max=3, step=1, value=0)
+                        column(3, wellPanel(
+                               numericInput("st", "Strength", min=0, max=3, step=1, value=0))
                         ), #end of column 2, inside fluidRow 2
                         
-                        column(3,
-                               numericInput("ag", "Agility", min=0, max=3, step=1, value=0)
+                        column(3, wellPanel(
+                               numericInput("ag", "Agility", min=0, max=3, step=1, value=0))
                         ), #end of column 3, inside fluidRow 2
                         
-                        column(3,
-                               numericInput("int", "Inteligence", min=0, max=3, step=1, value=0)
+                        column(3, wellPanel(
+                               numericInput("int", "Inteligence", min=0, max=3, step=1, value=0))
                         ) #end of column 4, inside fluidRow 2
                         
                 ), #end of inside fluidRow 2
                 
                 #++++++++++ ACTION BUTTONS
                 fluidRow(
-                        column(6, 
+                        column(3, offset = 3,
                                conditionalPanel("output.sum == 3", actionButton("goButton", "Go for first trial!"))
                         ), #end of column 1, inside fluidRow 3
                         
@@ -153,7 +154,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 p("You succesfully went through trials and are ready to go for your adventure.
                                           Here, take this fern, for luck."),
                                 
-                                plotOutput("fern")
+                                plotOutput("fern"),
+                                h6("Credits for fern go to maggielinyu.wordpress.com")
                                 ) #end of wellPanel
                         ), #end of conditionalPanel boss win
                 

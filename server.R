@@ -1,10 +1,10 @@
-
-
 shinyServer(function(input, output) {
-        # sum for first GO button:
+        # sum for go buttons:
         output$sum <- reactive(sum(input$st, input$ag, input$int))
         
         #Trial fight
+                #more elegant solutions like using switch or wrapping just input$trial use into ifelse statements weren't working
+                #and I don't know why :-(
         output$table <- renderTable({
                 if (input$trial==1) {
                         n1 <- (sample(1:6, 1, replace = T))
@@ -86,11 +86,5 @@ shinyServer(function(input, output) {
                 plot(y,x,col="dark green",cex=0.1)
         })
         
-        
-        
-        
-        
-        
-        
-        
+      
 })
