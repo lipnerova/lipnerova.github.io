@@ -6,8 +6,11 @@ shinyUI(fluidPage(theme = "bootstrap.css",
         fluidRow(
                 #++++++++++ INTRO
                 fluidRow(
-                        column(12, wellPanel(
-                          h3 ("The temple of trials"),
+                        column(1, img(src = "torch_gifmania_co_uk.gif"),
+                               br(),
+                               img(src = "torch_gifmania_co_uk.gif")),
+                        column(10, wellPanel(
+                          h3 ("The temple of trials", style = "text-align:center"),
                           h4("Imagine yourself being a young member of a small tribe somewhere in
                                 the wastelands aching to explore the world beyond your village's outskirts. Your task is to go 
                                 through the Trial and prove yourself worth of adventure you wish to experience. You will be tested
@@ -23,7 +26,11 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                             bigger then sum of your opponent roll(s). In first trial your opponents have one dice roll, in second one
                             your opponent has two rolls. You will have one more atribution point to spend after winning in first trial.")
                                 ) #end of wellPanel    
-                        ) #end of collumn of inside fluidRow 1
+                        ), #end of collumn of inside fluidRow 1
+                        
+                        column(1, img(src = "torch_gifmania_co_uk.gif"),
+                               br(),
+                               img(src = "torch_gifmania_co_uk.gif"))
                         
                 ), #end of inside fluidRow 1
                 
@@ -81,7 +88,11 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                br(),
                                radioButtons("trial", label = ("Which one do you choose?"),
                                             choices = list("Rats" = 1, "Traps" = 2, "Riddles" = 3), 
-                                            selected = 1, inline = TRUE), 
+                                            selected = 1, inline = TRUE),
+                               img(src = "MAMRATAA_se.gif"),
+                               img(src = "Bear_trap.jpg"),
+                               img(src = "RunePic2.jpg"),
+                               br(),
                                actionButton("fightButton", "Go to the chosed passage.")
                                
                                ) #end of wellPanel
@@ -92,8 +103,12 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                 column(4, conditionalPanel ("input.fightButton >=1", wellPanel(
                         p("Here are results of your trial:"),
                         tableOutput("table"),
+                        br(),
+                        img(src = "MAPLNTAA_se.gif"), img(src = "MAPLNTAA_se.gif"), img(src = "MAPLNTAA_se.gif"),
+                        br(),
                         radioButtons("winLose", label=h4("Have you win?"), 
                                      choices = list("Yes"=1, "No"=2), selected = character(0))
+                        
                                 ) #end of wellPanel      
                         ) #end of conditionalPanel
                 ), #end of column 2, fluidRow 2
@@ -129,7 +144,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 radioButtons("gatekeeper", label = ("What path do you choose?"),
                                      choices = list("Fight" = 1, "Steal" = 2, "Talk" = 3), 
                                      selected = 1, inline = TRUE), 
-                        
+                                img(src = "fight3.gif"),
+                                img(src = "pickpocket.gif"),
+                                img(src = "thinking3.gif"),
+                                br(),
                                 actionButton("bossButton", "Approach gatekeeper.")
                                 ) #end of wellPanel
                         ) #end of conditionalPanel
@@ -138,9 +156,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                 #++++++++++ FIGHT + WIN/LOSE
                 column(4, conditionalPanel ("input.bossButton >= 1", wellPanel(
                                 p("Here are results of your final trial:"),
-                                
                                 tableOutput("boss"),
-                                
+                                br(),
+                                img(src = "MAPLNTAA_se.gif"), img(src = "MAPLNTAA_se.gif"), img(src = "MAPLNTAA_se.gif"),
+                                br(),
                                 radioButtons("winLoseBoss", label=h4("Have you win?"), 
                                      choices = list("Yes"=1, "No"=2), selected = character(0))
                                 ) #end of wellPanel     
@@ -154,8 +173,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 p("You succesfully went through trials and are ready to go for your adventure.
                                           Here, take this fern, for luck."),
                                 
-                                plotOutput("fern"),
-                                h6("Credits for fern go to maggielinyu.wordpress.com")
+                                plotOutput("fern")
+                                
                                 ) #end of wellPanel
                         ), #end of conditionalPanel boss win
                 
@@ -165,7 +184,16 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                         ) #end of conditionalPanel boss lose
                 ) #end of column 3, fluidRow 3
                 
-        ) #end of fluidRow 3
+        ), #end of fluidRow 3
+
+        fluidRow(
+                column(10, offset = 1, conditionalPanel("input.winLoseBoss > 0", wellPanel(
+                       h6("Credits for gifs go to gifmania.co.uk and Fallout NMA (http://www.nma-fallout.com)."),
+                       h6("Credits for fern go to maggielinyu.wordpress.com")
+                                ) #end of wellPanel
+                        ) #end of conditionalPanel
+                ) #end of column 1, fluidRow 4
+        ) #end of fluidRow 4
 
 
 )) #end of shinyUI
