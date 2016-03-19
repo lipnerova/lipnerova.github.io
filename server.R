@@ -3,14 +3,14 @@ shinyServer(function(input, output) {
         output$sum <- reactive(sum(input$st, input$ag, input$int))
         
         #Trial fight
-                #more elegant solutions like using switch or wrapping just input$trial use into ifelse statements weren't working
-                #and I don't know why :-(
+                #more elegant solutions like using switch or wrapping just input$trial use 
+                #into ifelse statements weren't working and I don't know why :-(
         output$table <- renderTable({
                 #strength
                 if (input$trial==1) {
                         n1 <- (sample(1:6, 1, replace = T))
                         n2<- (sum((sample(1:6, input$st, replace = T))))
-                        n3 <- as.character(n1 < n2)
+                        n3 <- as.character(n1 <= n2)
                         df<-data.frame(n1, n2, n3)
                         colnames(df) <- c("Your opponent", "You", "Do you win?")
                         df}
@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
                         if (input$trial==2) {
                                 n1 <- (sample(1:6, 1, replace = T))
                                 n2<- (sum((sample(1:6, input$ag, replace = T))))
-                                n3 <- as.character(n1 < n2)
+                                n3 <- as.character(n1 <= n2)
                                 df<-data.frame(n1, n2, n3)
                                 colnames(df) <- c("Your opponent", "You", "Do you win?")
                                 df}
@@ -27,7 +27,7 @@ shinyServer(function(input, output) {
                 #intelligence
                         n1 <- (sample(1:6, 1, replace = T))
                         n2<- (sum((sample(1:6, input$int, replace = T))))
-                        n3 <- as.character(n1 < n2)
+                        n3 <- as.character(n1 <= n2)
                         df<-data.frame(n1, n2, n3)
                         colnames(df) <- c("Your opponent", "You", "Do you win?")
                         df}        
@@ -39,7 +39,7 @@ shinyServer(function(input, output) {
                 if (input$gatekeeper==1) {
                         n4 <- sum(sample(1:6, 2, replace = T))
                         n5<- (sum((sample(1:6, input$st, replace = T))))
-                        n6 <- as.character(n4 < n5)
+                        n6 <- as.character(n4 <= n5)
                         df<-data.frame(n4, n5, n6)
                         colnames(df) <- c("Gatekeeper", "You", "Do you win?")
                         df
@@ -49,7 +49,7 @@ shinyServer(function(input, output) {
                         if (input$gatekeeper==2) {
                                 n4 <- sum(sample(1:6, 2, replace = T))
                                 n5<- (sum((sample(1:6, input$ag, replace = T))))
-                                n6 <- as.character(n4 < n5)
+                                n6 <- as.character(n4 <= n5)
                                 df<-data.frame(n4, n5, n6)
                                 colnames(df) <- c("Gatekeeper", "You", "Do you win?")
                                 df
@@ -58,7 +58,7 @@ shinyServer(function(input, output) {
                 #intelligence
                         n4 <- sum(sample(1:6, 2, replace = T))
                         n5<- (sum((sample(1:6, input$int, replace = T))))
-                        n6 <- as.character(n4 < n5)
+                        n6 <- as.character(n4 <= n5)
                         df<-data.frame(n4, n5, n6)
                         colnames(df) <- c("Gatekeeper", "You", "Do you win?")
                         df

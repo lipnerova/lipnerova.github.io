@@ -1,5 +1,5 @@
 shinyUI(fluidPage(theme = "bootstrap.css", style = "color:rgb(187,187,153)",
-        titlePanel("Simple RPG simulator"),
+        titlePanel("Simple RPG game"),
         
 #++++++++++ ATRIBUTE SETTINGS ++++++++++       
         
@@ -22,7 +22,7 @@ shinyUI(fluidPage(theme = "bootstrap.css", style = "color:rgb(187,187,153)",
                           br(),
                           p("In more practical terms, you are to distribute 3 atribution points into your atributes 
                             (strength, agility, intelligence). Number of invested points determine number of dice rolls you have 
-                        given use of respective ability. The trials take form of dice rolls, the sum of your roll(s) have to be
+                        given use of respective ability (cap at 3 points per ability). The trials take form of dice rolls, the sum of your roll(s) have to be
                             bigger then sum of your opponent roll(s). In first trial your opponents have one dice roll, in second one
                             your opponent has two rolls. You will have one more atribution point to spend after winning in first trial.")
                                 ) #end of wellPanel    
