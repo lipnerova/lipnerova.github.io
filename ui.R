@@ -1,4 +1,4 @@
-shinyUI(fluidPage(theme = "bootstrap.css",
+shinyUI(fluidPage(theme = "bootstrap.css", style = "color:rgb(187,187,153)",
         titlePanel("Simple RPG simulator"),
         
 #++++++++++ ATRIBUTE SETTINGS ++++++++++       
@@ -10,7 +10,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                br(),
                                img(src = "torch_gifmania_co_uk.gif")),
                         column(10, wellPanel(
-                          h3 ("The temple of trials", style = "text-align:center"),
+                          h3 ("The Temple of Trials", style = "text-align:center"),
                           h4("Imagine yourself being a young member of a small tribe somewhere in
                                 the wastelands aching to explore the world beyond your village's outskirts. Your task is to go 
                                 through the Trial and prove yourself worth of adventure you wish to experience. You will be tested
@@ -21,7 +21,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                             you cannot be the best in everything, yet it is better to be at least good in something."),
                           br(),
                           p("In more practical terms, you are to distribute 3 atribution points into your atributes 
-                            (strength, agility, inteligence). Number of invested points determine number of dice rolls you have 
+                            (strength, agility, intelligence). Number of invested points determine number of dice rolls you have 
                         given use of respective ability. The trials take form of dice rolls, the sum of your roll(s) have to be
                             bigger then sum of your opponent roll(s). In first trial your opponents have one dice roll, in second one
                             your opponent has two rolls. You will have one more atribution point to spend after winning in first trial.")
@@ -50,7 +50,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                         ), #end of column 3, inside fluidRow 2
                         
                         column(3, wellPanel(
-                               numericInput("int", "Inteligence", min=0, max=3, step=1, value=0))
+                               numericInput("int", "Intelligence", min=0, max=3, step=1, value=0))
                         ) #end of column 4, inside fluidRow 2
                         
                 ), #end of inside fluidRow 2
@@ -185,6 +185,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                 ) #end of column 3, fluidRow 3
                 
         ), #end of fluidRow 3
+
+
+#++++++++++ CREDITS ++++++++++
 
         fluidRow(
                 column(10, offset = 1, conditionalPanel("input.winLoseBoss > 0", wellPanel(

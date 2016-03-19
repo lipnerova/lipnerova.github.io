@@ -6,6 +6,7 @@ shinyServer(function(input, output) {
                 #more elegant solutions like using switch or wrapping just input$trial use into ifelse statements weren't working
                 #and I don't know why :-(
         output$table <- renderTable({
+                #strength
                 if (input$trial==1) {
                         n1 <- (sample(1:6, 1, replace = T))
                         n2<- (sum((sample(1:6, input$st, replace = T))))
@@ -14,6 +15,7 @@ shinyServer(function(input, output) {
                         colnames(df) <- c("Your opponent", "You", "Do you win?")
                         df}
                 else
+                #agility
                         if (input$trial==2) {
                                 n1 <- (sample(1:6, 1, replace = T))
                                 n2<- (sum((sample(1:6, input$ag, replace = T))))
@@ -22,6 +24,7 @@ shinyServer(function(input, output) {
                                 colnames(df) <- c("Your opponent", "You", "Do you win?")
                                 df}
                 else {
+                #intelligence
                         n1 <- (sample(1:6, 1, replace = T))
                         n2<- (sum((sample(1:6, input$int, replace = T))))
                         n3 <- as.character(n1 < n2)
@@ -32,6 +35,7 @@ shinyServer(function(input, output) {
         
         #Gatekeeper fight
         output$boss <- renderTable({
+                #strength
                 if (input$gatekeeper==1) {
                         n4 <- sum(sample(1:6, 2, replace = T))
                         n5<- (sum((sample(1:6, input$st, replace = T))))
@@ -41,6 +45,7 @@ shinyServer(function(input, output) {
                         df
                 }
                 else
+                #agility
                         if (input$gatekeeper==2) {
                                 n4 <- sum(sample(1:6, 2, replace = T))
                                 n5<- (sum((sample(1:6, input$ag, replace = T))))
@@ -50,6 +55,7 @@ shinyServer(function(input, output) {
                                 df
                         }
                 else {
+                #intelligence
                         n4 <- sum(sample(1:6, 2, replace = T))
                         n5<- (sum((sample(1:6, input$int, replace = T))))
                         n6 <- as.character(n4 < n5)
